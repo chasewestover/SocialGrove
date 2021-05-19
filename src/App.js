@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename='/SocialGrove'>
         <NavBar />
         <main>
           <Routes add={add} snacks={snacks} drinks={drinks} />
