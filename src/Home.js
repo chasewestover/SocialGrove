@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardTitle } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 
 //home component
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
       <Card>
         <CardBody className="text-center">
           <h3 className="font-weight-bold">
-            Welcome to Silicon Valley's premier dive cafe!
+            Welcome to Silicon Valley's premier social dining experience!
           </h3>
         </CardBody>
       </Card>
