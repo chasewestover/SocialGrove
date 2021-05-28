@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+input {
+    background-color: #101010d1;
+}
+
 .list-group a {
     margin-top: 1rem;
     border-left: 5px dotted;

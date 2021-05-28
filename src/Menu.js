@@ -14,7 +14,7 @@ import {
 function Menu({ text, items, title }) {
   
   return (
-    <section className="col-md-4">
+    <section className="col-md-8">
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">{title}</CardTitle>
