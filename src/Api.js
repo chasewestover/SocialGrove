@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_API_URL = "https://my-json-server.typicode.com/chasewestover/SocialGrove-backend";
+const BASE_API_URL = process.env.REACT_APP_DB || "https://localhost:5000";
 
 /* 
   json-server will give you CRUD endpoints on snacks and drinks.

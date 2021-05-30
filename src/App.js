@@ -5,6 +5,8 @@ import SnackOrBoozeApi from "./Api";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
 
+console.log(process.env.REACT_APP_DB)
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [snacks, setSnacks] = useState([]);
@@ -33,7 +35,7 @@ function App() {
     getAllItems();
   }, []);
 
-  
+
   if (isLoading) {
     return <p>Loading &hellip;</p>;
   }
