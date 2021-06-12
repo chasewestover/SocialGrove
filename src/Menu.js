@@ -20,7 +20,7 @@ function Menu({ text, items, title }) {
           <CardTitle className="font-weight-bold text-center">{title}</CardTitle>
           <CardText>{text}</CardText>
           <ListGroup>
-            {items.map(item => (
+            {items && items.map(item => (
               <Link to={`/${title.toLowerCase()}/${item.id}`} key={item.id}>
                 <ListGroupItem>{item.name}</ListGroupItem>
               </Link>

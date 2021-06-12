@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import SnackOrBoozeApi from "./Api";
+import API from "./Api";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
 
-console.log(process.env.REACT_APP_DB)
+console.log(process.env.REACT_APP_DB);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,16 +18,19 @@ function App() {
       case 'snack':
         setSnacks(snacks => [...snacks, item]);
         break;
-      case 'snack':
+      case 'drink':
         setDrinks(snacks => [...snacks, item]);
+        break;
+      default:
+        break;
     }
   }
 
   //loads snacks and drinks from the API on initial render
   useEffect(() => {
     async function getAllItems() {
-      let snacks = await SnackOrBoozeApi.getSnacks();
-      let drinks = await SnackOrBoozeApi.getDrinks();
+      let snacks = await API.getSnacks();
+      let drinks = await API.getDrinks();
       setSnacks(snacks);
       setDrinks(drinks);
       setIsLoading(false);

@@ -6,17 +6,18 @@ import SnackOrBoozeApi from "./Api";
 //form for adding an item
 function AddForm({ add, defaultData = { type: "snack", name: "", description: "", recipe: "", serve: "" } }) {
   const [formData, setFormData] = useState(defaultData);
-  const [valid, setValid] = useState(true);
+  const [msg, setMsg] = useState('');
   const history = useHistory();
 
   //on form submit, validate data. If valid, add the snack/drink and redirect to snacks/drinks page
-  async function handleSubmit(evt) {               
-    evt.preventDefault();                                    //       ¯\_(ツ)_/¯
-    validate(); //why is my validation not updating 'valid' before the conditional? I thought the arrow function on line 27 would force this
-    if (valid) {  //I've also used this pattern before with no issues so I'm a bit stumped 
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    if (Object.values(formData).some((v) => v === "")) {
+      setMsg("Fill all blanks");
+    } else {
       let result = await SnackOrBoozeApi.add(formData.type, { ...formData, type: undefined });
       add(formData.type, result);
-      history.push(`/${formData.type}s`)
+      history.push(`/${formData.type}s`);
     }
   }
 
@@ -24,11 +25,7 @@ function AddForm({ add, defaultData = { type: "snack", name: "", description: ""
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(d => ({ ...d, [name]: value }));
-  }
-
-  //validate all inputs non-empty
-  function validate() {
-    setValid(v => !Object.values(formData).includes(""));
+    setMsg('');
   }
 
   return (
@@ -60,7 +57,7 @@ function AddForm({ add, defaultData = { type: "snack", name: "", description: ""
             <Input onChange={handleChange} type="text" name="serve" value={formData.serve} />
           </FormGroup>
           <Button type="submit">Submit</Button>
-          {!valid && <p style={{color: "red"}}>Please fill all inputs</p>}
+          {msg && <p style={{ color: "red" }}>Please fill all inputs</p>}
         </Form>
       </CardBody>
     </Card>
