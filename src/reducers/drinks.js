@@ -1,12 +1,14 @@
-import API from "../Api";
 
-async function snacksReducer(state = [], action){
+function snacksReducer(state = [], action){
   switch(action.type){
-    case "FETCH":
-      let snacks = await API.getSnacks();
-      return snacks;
+    case "UPDATE_SNACKS":
+      return action.payload;
     case "ADD":
-      return [...state, action.payload]
+      if(action.payload.type === "snack"){
+        return [...state, action.payload];
+      } else {
+        return state;
+      }
     default:
       return state;
   }

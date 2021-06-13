@@ -30,9 +30,9 @@ class API {
   }
 
   //post request to add a resource, returns the newly added resource
-  static async add(type, data) {
+  static async add(data) {
 
-    const result = await fetch(`${BASE_API_URL}/${type}s`, {
+    const result = await fetch(`${BASE_API_URL}/${data.type}s`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -43,7 +43,6 @@ class API {
       throw new Error(`An error has occured: ${result.status}`);
     }
     const json = await result.json();
-    console.log(result, json)
     return json;
   }
 

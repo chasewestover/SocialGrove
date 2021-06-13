@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { add } from "./actions";
 import API from "./Api";
 
 //form for adding an item
-function AddForm({ add, defaultData = { type: "snack", name: "", description: "", recipe: "", serve: "" } }) {
+function AddForm({ defaultData = { type: "snack", name: "", description: "", recipe: "", serve: "" } }) {
   const [formData, setFormData] = useState(defaultData);
   const [msg, setMsg] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
+
 
   //on form submit, validate data. If valid, add the snack/drink and redirect to snacks/drinks page
   async function handleSubmit(evt) {
@@ -15,8 +19,8 @@ function AddForm({ add, defaultData = { type: "snack", name: "", description: ""
     if (Object.values(formData).some((v) => v === "")) {
       setMsg("Fill all blanks");
     } else {
-      let result = await API.add(formData.type, { ...formData, type: undefined });
-      add(formData.type, result);
+      let result = await API.add(formData);
+      dispatch(add(result));
       history.push(`/${formData.type}s`);
     }
   }

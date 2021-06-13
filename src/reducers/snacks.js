@@ -1,12 +1,14 @@
-import API from "../Api";
 
-async function drinksReducer(state = [], action) {
+function drinksReducer(state = [], action) {
   switch (action.type) {
-    case "FETCH":
-      let drinks = await API.getDrinks();
-      return drinks;
+    case "UPDATE_DRINKS":
+      return action.payload;
     case "ADD":
-      return [...state, action.payload];
+      if (action.payload.type === "drink") {
+        return [...state, action.payload];
+      } else {
+        return state;
+      }
     default:
       return state;
   }
