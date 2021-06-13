@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateDrinks, updateSnacks } from "./actions";
 import API from "./Api";
 
-console.log(process.env.REACT_APP_DB);
-
 function App() {
   const snacks = useSelector(state => state.snacks);
   const drinks = useSelector(state => state.drinks);

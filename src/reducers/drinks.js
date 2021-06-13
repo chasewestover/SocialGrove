@@ -1,10 +1,10 @@
 
-function snacksReducer(state = [], action){
-  switch(action.type){
-    case "UPDATE_SNACKS":
+function drinksReducer(state = [], action) {
+  switch (action.type) {
+    case "UPDATE_DRINKS":
       return action.payload;
     case "ADD":
-      if(action.payload.type === "snack"){
+      if (action.payload.type === "drink") {
         return [...state, action.payload];
       } else {
         return state;
@@ -14,4 +14,4 @@ function snacksReducer(state = [], action){
   }
 }
 
-export default snacksReducer;
+export default drinksReducer;

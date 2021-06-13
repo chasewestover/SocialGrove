@@ -12,7 +12,7 @@ function Routes({snacks, drinks}) {
   const drinkText = "Uhoh! We got drinks, yes we do!! We got drunk how bout you?!?"
   return (
     <Switch>
-      <Route exact path="/"><Home snacks={snacks} /></Route>
+      <Route exact path="/"><Home /></Route>
       <Route exact path="/snacks"><Menu text={snackText} items={snacks} title="Snacks" /></Route>
       <Route path="/snacks/:id"><Item items={snacks} cantFind="/snacks" /></Route>
       <Route exact path="/drinks"><Menu text={drinkText} items={drinks} title="Drinks" /></Route>
