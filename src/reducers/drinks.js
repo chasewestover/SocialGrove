@@ -8,7 +8,7 @@ async function snacksReducer(state = [], action){
     case "ADD":
       return [...state, action.payload]
     default:
-      break;
+      return state;
   }
 }
 
