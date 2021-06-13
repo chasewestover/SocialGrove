@@ -7,7 +7,7 @@ const BASE_API_URL = process.env.REACT_APP_DB ;
   You'll need to add to this class as you build features for the app.
 */
 
-class SnackOrBoozeApi {
+class API {
 
   //gets all snacks
   static async getSnacks() {
@@ -49,4 +49,4 @@ class SnackOrBoozeApi {
 
 }
 
-export default SnackOrBoozeApi;
+export default API;

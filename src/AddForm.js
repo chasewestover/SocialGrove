@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import SnackOrBoozeApi from "./Api";
+import API from "./Api";
 
 //form for adding an item
 function AddForm({ add, defaultData = { type: "snack", name: "", description: "", recipe: "", serve: "" } }) {
@@ -15,7 +15,7 @@ function AddForm({ add, defaultData = { type: "snack", name: "", description: ""
     if (Object.values(formData).some((v) => v === "")) {
       setMsg("Fill all blanks");
     } else {
-      let result = await SnackOrBoozeApi.add(formData.type, { ...formData, type: undefined });
+      let result = await API.add(formData.type, { ...formData, type: undefined });
       add(formData.type, result);
       history.push(`/${formData.type}s`);
     }
